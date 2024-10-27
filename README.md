@@ -1,7 +1,7 @@
 # Simple SNS
 
 # 사용 기술
-![사용 기술](./doc/사용기술.png)
+![skill](./doc/skill.png)
 
 ## Application Architecture 
 ![system architecture](./doc/SystemArchitecture.png)
