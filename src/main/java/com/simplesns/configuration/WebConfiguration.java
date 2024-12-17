@@ -34,18 +34,6 @@ public class WebConfiguration implements WebMvcConfigurer {
         private final Resource index = new ClassPathResource(REACT_DIR + "index.html");
         private final List<String> staticExtension = Arrays.asList("png", "jpg", "io", "json", "js", "html");
 
-        private Resource resolve(String requestPath) {
-            log.info(requestPath);
-            if (requestPath == null) {
-                return null;
-            }
-            if (staticExtension.contains(requestPath) || requestPath.startsWith(REACT_STATIC_DIR)) {
-                return new ClassPathResource(REACT_DIR + requestPath);
-            } else {
-                return index;
-            }
-        }
-
         @Override
         public Resource resolveResource(HttpServletRequest request, String requestPath, List<? extends Resource> locations, ResourceResolverChain chain) {
             return resolve(requestPath);
@@ -62,6 +50,18 @@ public class WebConfiguration implements WebMvcConfigurer {
                 return resolvedResource.getURL().toString();
             } catch (IOException e) {
                 return resolvedResource.getFilename();
+            }
+        }
+
+        private Resource resolve(String requestPath) {
+            log.info(requestPath);
+            if (requestPath == null) {
+                return null;
+            }
+            if (staticExtension.contains(requestPath) || requestPath.startsWith(REACT_STATIC_DIR)) {
+                return new ClassPathResource(REACT_DIR + requestPath);
+            } else {
+                return index;
             }
         }
     }
