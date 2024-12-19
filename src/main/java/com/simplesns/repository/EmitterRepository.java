@@ -24,11 +24,10 @@ public class EmitterRepository {
     /**
      * 사용자 ID와 SseEmitter 객체를 저장
      */
-    public SseEmitter save(Integer userId, SseEmitter emitter) {
+    public void save(Integer userId, SseEmitter emitter) {
         String key = getKey(userId);
         log.info("Set Emitter to Redis {}({})", key, emitter);
         emitterMap.put(key, emitter);
-        return emitter;
     }
 
     /**
