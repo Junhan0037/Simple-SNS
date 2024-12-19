@@ -22,7 +22,6 @@ import java.util.List;
 public class JwtTokenFilter extends OncePerRequestFilter {
 
     private final UserService userService;
-
     private final String secretKey;
 
     private final static List<String> TOKEN_IN_PARAM_URLS = List.of("/api/v1/users/alarm/subscribe");
